@@ -296,19 +296,28 @@ EOF
 # Results
 ## Results
 
-Disk 10G / Data > 5G: 
-Backup: 3m 27s 
-Restore: 3m 05s
+### Disk 10G / Data > 5G 
+- *Backup*: 3m 27s 
+- *Restore*: 3m 05s
 
-Node Metrics from 'Observe':
+#### Node Metrics from 'Observe' (restore):
 ![Node metrics view 1](https://github.com/CSA-RH/oadp-benchmark-demo/blob/main/screenshoots/node_view1.png)
 ![Node metrics view 2](https://github.com/CSA-RH/oadp-benchmark-demo/blob/main/screenshoots/node_view2.png)
 
-POD Metrics from 'Observe':
+#### POD Metrics from 'Observe' (restore):
 ![POD metrics view 1](https://github.com/CSA-RH/oadp-benchmark-demo/blob/main/screenshoots/pod_view1.png)
 ![POD metrics view 2](https://github.com/CSA-RH/oadp-benchmark-demo/blob/main/screenshoots/pod_view2.png)
 
-Disk 100G / Data > 50G: 
+### Disk 100G / Data > 50G 
+- *Backup*: 1h 14m 
+- *Restore*: 37m
+  
+#### Node Metrics from 'Observe' (backup):
+![Node metrics view 1](screenshoots/node-exporter-backup-100gb-1.png)
+![Node metrics view 2](screenshoots/node-exporter-backup-100gb-2.png)
 
+#### POD Metrics from 'Observe' (backup):
+![POD metrics view 1](screenshoots/node-agent-backup-100gb-1.png)
+![POD metrics view 2](screenshoots/node-agent-backup-100gb-2.png)
 
 

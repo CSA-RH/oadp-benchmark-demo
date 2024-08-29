@@ -280,12 +280,12 @@ cat <<EOF | oc apply -f -
 apiVersion: velero.io/v1
 kind: Backup
 metadata:
-  name: backup-$NAMESPACE_PETCLINIC
+  generateName: backup-${NAMESPACE_PETCLINIC}-
   namespace: openshift-adp
 spec:
   includedNamespaces:
     - $NAMESPACE_PETCLINIC
-
+  snapshotMoveData: true
 ```
 
 ## Results

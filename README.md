@@ -283,6 +283,7 @@ metadata:
   generateName: backup-${NAMESPACE_PETCLINIC}-
   namespace: openshift-adp
 spec:
+  csiSnapshotTimeout: 2h00m0s
   includedNamespaces:
     - $NAMESPACE_PETCLINIC
   snapshotMoveData: true

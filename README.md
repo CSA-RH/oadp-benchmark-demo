@@ -299,6 +299,14 @@ Disk 10G / Data > 5G:
 Backup: 3m 27s 
 Restore: 3m 05s
 
+Node Metrics from 'Observe':
+![Node metrics view 1](https://github.com/CSA-RH/oadp-benchmark-demo/blob/main/screenshoots/node_view1.png)
+![Node metrics view 2](https://github.com/CSA-RH/oadp-benchmark-demo/blob/main/screenshoots/node_view2.png)
+
+POD Metrics from 'Observe':
+![POD metrics view 1](https://github.com/CSA-RH/oadp-benchmark-demo/blob/main/screenshoots/pod_view1.png)
+![POD metrics view 2](https://github.com/CSA-RH/oadp-benchmark-demo/blob/main/screenshoots/pod_view2.png)
+
 Disk 100G / Data > 50G: 
 
 

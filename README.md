@@ -215,9 +215,8 @@ EOF
 Create benchmark information 
 ```console
 FILE_BENCHMARK_SIZE=$(( $FACTOR / 2 ))
-oc exec -n $NAMESPACE_PETCLINIC deploy/mysql-deployment  time head -c ${FILE_BENCHMARK_SIZE}G < /dev/urandom > /var/lib/mysql/testfile.benchmark${FACTOR}gb.bin
-oc exec -n $NAMESPACE_PETCLINIC deploy/mysql-deployment  time sha2sum /var/lib/mysql/testfile.benchmark${FACTOR}gb.bin > /var/lib/mysql/testfile.sha1.txt
+oc exec -n $NAMESPACE_PETCLINIC deploy/mysql-deployment -it -- \
+  /bin/sh -c "head -c ${FILE_BENCHMARK_SIZE}G < /dev/urandom > /var/lib/mysql/testfile.benchmark${FACTOR}gb.bin"
+oc exec -n $NAMESPACE_PETCLINIC deploy/mysql-deployment -it -- \
+  /bin/sh -c "sha1sum /var/lib/mysql/testfile.benchmark${FACTOR}gb.bin > /var/lib/mysql/testfile.sha1.txt && cat /var/lib/mysql/testfile.sha1.txt"
 ```
-
-
-

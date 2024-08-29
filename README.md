@@ -34,7 +34,21 @@ spec:
   startingCSV: oadp-operator.v1.3.3
 ```
 
-# OADP, velero and kopia configuration for OpenShift
+# OADP configuration for OpenShift
+
+Cloud Credentials secret in namespace OADP
+
+Secret for S3 compatible storage access (AWS)
+```console
+AWS_CLIENT_ID=TODO         # <<--- HERE YOUR AWS CLIENT ID
+AWS_CLIENT_SECRET=TODO     # <<--- HERE YOUR AWS CLIENT SECRET
+cat <<EOF > /tmp/credentials-oadp
+[default]
+aws_access_key_id=$AWS_CLIENT_ID
+aws_secret_access_key=$AWS_CLIENT_SECRET
+EOF
+oc create secret generic cloud-credentials -n openshift-adp --from-file cloud=/tmp/credentials-oadp 
+```
 
 CloudStorage
 ```yaml

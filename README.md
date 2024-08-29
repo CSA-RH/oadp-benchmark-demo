@@ -39,7 +39,6 @@ TODO
 
 # Petclinic installation for benchmarking
 
-
 ```console
 export NAMESPACE_PETCLINIC=petclinic-benchmark${FACTOR}gb
 cat <<EOF | oc apply -f -
@@ -212,7 +211,7 @@ spec:
 EOF
 ```
 
-Create benchmark information 
+# Create benchmark information 
 ```console
 FILE_BENCHMARK_SIZE=$(( $FACTOR / 2 ))
 oc exec -n $NAMESPACE_PETCLINIC deploy/mysql-deployment -it -- \
@@ -220,3 +219,29 @@ oc exec -n $NAMESPACE_PETCLINIC deploy/mysql-deployment -it -- \
 oc exec -n $NAMESPACE_PETCLINIC deploy/mysql-deployment -it -- \
   /bin/sh -c "sha1sum /var/lib/mysql/testfile.benchmark${FACTOR}gb.bin > /var/lib/mysql/testfile.sha1.txt && cat /var/lib/mysql/testfile.sha1.txt"
 ```
+
+# Execute Benchmark Backup
+
+## Scripts
+```console
+
+cat <<EOF | oc apply -f - 
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: backup-$NAMESPACE_PETCLINIC
+  namespace: openshift-adp
+spec:
+  includedNamespaces:
+    - $NAMESPACE_PETCLINIC
+EOF
+```
+
+## Results
+
+# Execute Benchmark Restore
+
+## Scripts
+
+## Results
+

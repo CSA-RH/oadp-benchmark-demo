@@ -276,7 +276,7 @@ oc exec -n $NAMESPACE_PETCLINIC deploy/mysql-deployment -it -- \
 ## Scripts
 
 ```console
-cat <<EOF | oc apply -f - 
+cat <<EOF | oc create -f - 
 apiVersion: velero.io/v1
 kind: Backup
 metadata:
@@ -286,6 +286,7 @@ spec:
   includedNamespaces:
     - $NAMESPACE_PETCLINIC
   snapshotMoveData: true
+EOF
 ```
 
 ## Results

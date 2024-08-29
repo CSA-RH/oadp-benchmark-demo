@@ -37,10 +37,10 @@ spec:
 # OADP, velero and kopia configuration for OpenShift
 
 CloudStorage
-```console
-cat <<EOF | oc apply -f -
+```yaml
 apiVersion: oadp.openshift.io/v1alpha1
 kind: CloudStorage
+metadata:
   name: rosa-csa-oadp
   namespace: openshift-adp
 spec:
@@ -51,14 +51,12 @@ spec:
   name: rosa-csa-oadp
   provider: aws
   region: us-east-2
-EOF
 ```
 
 
 DataProtectionApplication
 
-```console
-cat <<EOF | oc apply -f -
+```yaml
 apiVersion: oadp.openshift.io/v1alpha1
 kind: DataProtectionApplication
 metadata:
@@ -88,7 +86,6 @@ spec:
       defaultSnapshotMoveData: true
       featureFlags:
         - EnableCSI
-EOF
 ```
 
 # Petclinic installation for benchmarking
@@ -277,8 +274,8 @@ oc exec -n $NAMESPACE_PETCLINIC deploy/mysql-deployment -it -- \
 # Execute Benchmark Backup
 
 ## Scripts
-```console
 
+```console
 cat <<EOF | oc apply -f - 
 apiVersion: velero.io/v1
 kind: Backup
@@ -288,7 +285,7 @@ metadata:
 spec:
   includedNamespaces:
     - $NAMESPACE_PETCLINIC
-EOF
+
 ```
 
 ## Results

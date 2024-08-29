@@ -34,8 +34,62 @@ spec:
   startingCSV: oadp-operator.v1.3.3
 ```
 
-# Kopia configuration
-TODO 
+# OADP, velero and kopia configuration for OpenShift
+
+CloudStorage
+```console
+cat <<EOF | oc apply -f -
+apiVersion: oadp.openshift.io/v1alpha1
+kind: CloudStorage
+  name: rosa-csa-oadp
+  namespace: openshift-adp
+spec:
+  creationSecret:
+    key: cloud
+    name: cloud-credentials
+  enableSharedConfig: true
+  name: rosa-csa-oadp
+  provider: aws
+  region: us-east-2
+EOF
+```
+
+
+DataProtectionApplication
+
+```console
+cat <<EOF | oc apply -f -
+apiVersion: oadp.openshift.io/v1alpha1
+kind: DataProtectionApplication
+metadata:
+  name: rosa-csa-dpa
+  namespace: openshift-adp
+spec:
+  backupImages: true
+  backupLocations:
+    - velero:
+        credential:
+          key: cloud
+          name: cloud-credentials
+        default: true
+        objectStorage:
+          bucket: rosa-csa-oadp
+          prefix: velero
+        provider: aws
+  configuration:
+    nodeAgent:
+      enable: true
+      uploaderType: kopia
+    velero:
+      defaultPlugins:
+        - openshift
+        - aws
+        - csi
+      defaultSnapshotMoveData: true
+      featureFlags:
+        - EnableCSI
+EOF
+```
 
 # Petclinic installation for benchmarking
 

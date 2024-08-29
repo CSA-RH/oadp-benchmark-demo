@@ -288,12 +288,18 @@ spec:
   snapshotMoveData: true
 EOF
 ```
-
-## Results
-
 # Execute Benchmark Restore
 
 ## Scripts
 
+# Results
 ## Results
+
+Disk 10G / Data > 5G: 
+Backup: 3m 27s 
+Restore: 3m 05s
+
+Disk 100G / Data > 50G: 
+
+
 

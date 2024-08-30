@@ -321,6 +321,7 @@ metadata:
   namespace: openshift-adp
 spec:
   csiSnapshotTimeout: 24h00m0s
+  itemOperationTimeout: 24h0m0s
   includedNamespaces:
     - $NAMESPACE_PETCLINIC
   snapshotMoveData: true

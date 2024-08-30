@@ -102,6 +102,11 @@ spec:
         - EnableCSI
 ```
 
+# Observability 
+
+See [GitHub repository README.md file about OADP Monitoring](https://github.com/openshift/oadp-operator/blob/master/docs/oadp_monitoring.md)
+
+
 # Petclinic installation for benchmarking
 
 ```console

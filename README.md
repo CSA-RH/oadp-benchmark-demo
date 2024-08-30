@@ -104,8 +104,26 @@ spec:
 
 # Observability 
 
-See [GitHub repository README.md file about OADP Monitoring](https://github.com/openshift/oadp-operator/blob/master/docs/oadp_monitoring.md)
+See [GitHub repository README.md file about OADP Monitoring](https://github.com/openshift/oadp-operator/blob/master/docs/oadp_monitoring.md) for more information. ROSA comes with the User Workload Monitoring flag enabled, therefore it may only be needed to create the ServiceMonitor resource for Velero's port 8085 as per the previously referenced documentation: 
 
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: oadp-service-monitor
+  name: oadp-service-monitor
+  namespace: openshift-adp
+spec:
+  endpoints:
+  - interval: 30s
+    path: /metrics
+    targetPort: 8085
+    scheme: http
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: "velero"
+```
 
 # Petclinic installation for benchmarking
 
